@@ -10,6 +10,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(fileUpload())
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 let eventMusic = [
   {
@@ -49,7 +54,7 @@ let carts = [
     customerName: "Jeisa",
     phoneNumber: "085678",
     tickets:
-      { id: 1, quantity: 1 },
+      { id: 2, quantity: 1 },
     totalPrice: 135000
   },
   {
@@ -57,7 +62,7 @@ let carts = [
     customerName: "Genta",
     phoneNumber: "0812345678",
     tickets:
-      { id: 1, quantity: 1 },
+      { id: 3, quantity: 1 },
     totalPrice: 135000
   },
 ]
@@ -456,4 +461,4 @@ app.post('/checkout/:id', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+}) 
