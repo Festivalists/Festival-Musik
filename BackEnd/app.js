@@ -51,7 +51,7 @@ let carts = [
     customerName: "Jeisa",
     phoneNumber: "085678",
     tickets:
-      { id: 1, quantity: 1 },
+      { id: 2, quantity: 1 },
     totalPrice: 135000
   },
   {
@@ -458,4 +458,4 @@ app.post('/checkout/:id', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+}) 
