@@ -55,8 +55,8 @@ putForm.addEventListener('submit', (event) => {
     })
     .then(data => {
       console.log('Update Successful:', data);
-      // Balik ke get.html
-      window.location.href = `get.html?id=${cartId}`
+      // Balik ke get-delete.html
+      window.location.href = `get-delete.html?id=${cartId}`
     })
     .catch(error => {
       console.error('Error:', error.message);
