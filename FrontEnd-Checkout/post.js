@@ -65,7 +65,7 @@ postForm.addEventListener('submit', (event) => {
       console.log('Response:', data);
       console.log('Request body:', options.body);
 
-      window.location.href = `get.html`
+      window.location.href = `get-delete.html`
     })
     .catch(error => {
         console.error('Error:', error.message);
