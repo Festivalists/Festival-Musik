@@ -5,7 +5,9 @@ const path = require('path')
 const fileUpload = require('express-fileupload')
 const joi = require('joi')
 const fs = require('fs')
+var cors = require('cors')
 
+app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -41,8 +43,8 @@ let carts = [
     customerName: "Sahal",
     phoneNumber: "08123",
     tickets:
-      { id: 1, quantity: 2 },
-    totalPrice: 270000
+      { id: 2, quantity: 2 },
+    totalPrice: 300000
   },
   {
     id: 2,
@@ -57,8 +59,8 @@ let carts = [
     customerName: "Genta",
     phoneNumber: "0812345678",
     tickets:
-      { id: 1, quantity: 1 },
-    totalPrice: 135000
+      { id: 3, quantity: 1 },
+    totalPrice: 175000
   },
 ]
 
