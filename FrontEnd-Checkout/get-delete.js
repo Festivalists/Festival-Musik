@@ -1,6 +1,6 @@
-const apiCart = 'https://79c7-2001-448a-20a0-4169-d4b6-218e-ebfa-7a3a.ngrok-free.app/cart'
-const apiEvent = 'https://79c7-2001-448a-20a0-4169-d4b6-218e-ebfa-7a3a.ngrok-free.app/event'
-const apiCheckout = 'https://79c7-2001-448a-20a0-4169-d4b6-218e-ebfa-7a3a.ngrok-free.app/checkout'
+const apiCart = 'http://localhost:3000/cart'
+const apiEvent = 'http://localhost:3000/event'
+const apiCheckout = 'http://localhost:3000/checkout'
 
 const bodyCart = document.querySelector('.bodyCart')
 const bodyCheckout = document.querySelector('.bodyCheckout')
