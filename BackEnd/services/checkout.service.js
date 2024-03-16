@@ -7,6 +7,7 @@ exports.getAllCheckouts = async (req, res) => {
   const dataConvertObject = data.map(checkout => {
     return {
       id: checkout.id,
+      userId: checkout.userId,
       customerName: checkout.customerName,
       phoneNumber: checkout.phoneNumber,
       tickets:
@@ -35,12 +36,13 @@ exports.createCheckout = async (req, res) => {
     }
   }
 
-  const { customerName, phoneNumber, ticketsId, quantity, totalPrice } = cart
+  const { userId, customerName, phoneNumber, ticketsId, quantity, totalPrice } = cart
+
   const paymentStatus = 'Lunas'
 
   await carts.destroy({ where: { id } })
 
-  const data = await checkouts.create({ customerName, phoneNumber, ticketsId, quantity, totalPrice, paymentStatus })
+  const data = await checkouts.create({ userId, customerName, phoneNumber, ticketsId, quantity, totalPrice, paymentStatus })
 
   return {
     status: 201,

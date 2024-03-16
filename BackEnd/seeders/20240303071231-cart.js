@@ -14,6 +14,7 @@ module.exports = {
     */
     await queryInterface.bulkInsert('carts', [
       {
+        "userId": 1,
         "customerName": "Sahal",
         "phoneNumber": "08123",
         "ticketsId": 2,
@@ -21,6 +22,7 @@ module.exports = {
         "totalPrice": 300000
       },
       {
+        "userId": 2,
         "customerName": "Jeisa",
         "phoneNumber": "085678",
         "ticketsId": 2,
@@ -28,6 +30,7 @@ module.exports = {
         "totalPrice": 150000
       },
       {
+        "userId": 3,
         "customerName": "Genta",
         "phoneNumber": "0812345678",
         "ticketsId": 3,

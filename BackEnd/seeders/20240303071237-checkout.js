@@ -15,6 +15,7 @@ module.exports = {
 
     await queryInterface.bulkInsert('checkouts', [
       {
+        "userId": 1,
         "customerName": "Fajri",
         "phoneNumber": "08123",
         "ticketsId": 1,
@@ -23,6 +24,7 @@ module.exports = {
         "paymentStatus": "Lunas"
       },
       {
+        "userId": 2,
         "customerName": "Ganela",
         "phoneNumber": "085678",
         "ticketsId": 1,
@@ -31,6 +33,7 @@ module.exports = {
         "paymentStatus": "Lunas"
       },
       {
+        "userId": 3,
         "customerName": "Bhatara",
         "phoneNumber": "0812345678",
         "ticketsId": 1,

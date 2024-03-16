@@ -2,11 +2,14 @@ const { carts, events } = require('../models')
 
 exports.getAllCarts = async (req, res) => {
 
-  const data = await carts.findAll()
+  const userId = req.user_data.id
+
+  const data = await carts.findAll({ where: { userId } })
 
   const dataConvertObject = data.map(cart => {
     return {
       id: cart.id,
+      userId: cart.userId,
       customerName: cart.customerName,
       phoneNumber: cart.phoneNumber,
       tickets:
@@ -25,7 +28,9 @@ exports.getAllCarts = async (req, res) => {
 exports.getDetailCart = async (req, res) => {
   const { id } = req.params
 
-  const data = await carts.findOne({ where: { id } })
+  const userId = req.user_data.id
+
+  const data = await carts.findOne({ where: { id, userId } })
 
   if (!data) {
     return {
@@ -36,6 +41,7 @@ exports.getDetailCart = async (req, res) => {
 
   data.dataValues = {
     id: data.dataValues.id,
+    userId: data.dataValues.userId,
     customerName: data.dataValues.customerName,
     phoneNumber: data.dataValues.phoneNumber,
     tickets:
@@ -62,9 +68,11 @@ exports.createCart = async (req, res) => {
     }
   }
 
+  const userId = req.user_data.id
+
   const totalPrice = event.price * tickets.quantity;
 
-  const data = await carts.create({ customerName, phoneNumber, ticketsId: tickets.id, quantity: tickets.quantity, totalPrice })
+  const data = await carts.create({ userId, customerName, phoneNumber, ticketsId: tickets.id, quantity: tickets.quantity, totalPrice })
 
   return {
     status: 201,
@@ -76,7 +84,9 @@ exports.createCart = async (req, res) => {
 exports.editCart = async (req, res) => {
   const { id } = req.params;
 
-  const data = await carts.findOne({ where: { id } })
+  const userId = req.user_data.id
+
+  const data = await carts.findOne({ where: { id, userId } })
 
   if (!data) {
     return {
@@ -98,7 +108,7 @@ exports.editCart = async (req, res) => {
 
   const totalPrice = event.price * tickets.quantity;
 
-  await carts.update({ customerName, phoneNumber, ticketsId: tickets.id, quantity: tickets.quantity, totalPrice }, { where: { id } })
+  await carts.update({ userId, customerName, phoneNumber, ticketsId: tickets.id, quantity: tickets.quantity, totalPrice }, { where: { id } })
 
   return {
     status: 200,
@@ -111,7 +121,9 @@ exports.editCart = async (req, res) => {
 exports.deleteCart = async (req, res) => {
   const { id } = req.params
 
-  const data = await carts.findOne({ where: { id } })
+  const userId = req.user_data.id
+
+  const data = await carts.findOne({ where: { id, userId } })
 
   if (!data) {
     return {
